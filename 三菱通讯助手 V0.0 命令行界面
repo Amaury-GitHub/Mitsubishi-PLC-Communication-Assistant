@@ -1,0 +1,35 @@
+while True:
+    str = input('请输入字符串：\n')
+    strlist = list (str)
+    strlen = len (strlist)
+    a = 0
+    while a < strlen:
+        strlist[a] = hex(ord(strlist[a]))
+        a += 1
+    b = 0
+    while b < strlen:
+        strlist[b] = strlist[b][2:].upper()
+        b += 1
+    strlist1 = strlist[:]
+    if strlen % 2 == 0:
+        pass
+    else:
+        strlist1.append('16#')
+    strlen1 = len (strlist1)
+    c = 0
+    while c < strlen1:
+        strlist1[c+1] += strlist1[c]
+        strlist1[c] = '16#'
+        strlist1[c] += strlist1[c+1]
+        c += 2
+    strlen2 = strlen1/2
+    d = 1
+    while d <= strlen2:
+        del strlist1[d]
+        d += 1
+    if strlen % 2 == 0:
+        pass
+    else:
+        strlist1[-1] = strlist1[-1][3:]
+    print ("\n".join(strlist1))
+    print ('长度',strlen)
